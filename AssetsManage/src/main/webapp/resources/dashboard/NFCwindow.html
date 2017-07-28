@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="finalApp">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- bring the DB data: QRcode image and data  -->
+<!-- update the data and repeat -->
+<div>
+	<a href="" style="float:left;" onclick="window.open('./QRwindow.html','','width=260,height=260, toolbars=no,resizable=yes,scrollbars=no')">
+			<img src="../images/QRgen.png" style="margin:20px;" width="80px" height="80px" align="left" alt="QRcode" class="hidden-xs hidden-sm" border="1px">
+	</a>
+	<p>도서 명 : 토비의 스프링3.1 Vol.1스프링의 이해와 원리(이일민 저)</p>
+	<p>읽기 시작한 날짜 : 2017-05-31</p>
+	<p>진행률 : 7.86% (65/827)</p>
+	<p>완독 목표 날짜 : 2017-08-31</p>
+</div>
+<hr>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+	
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+		  ['Year', 'Entry', { role: "style" }],
+          ['2017-05-30',  0, "skyblue"],
+          ['2017-05-31',  10, "skyblue"],
+          ['2017-06-01',  22, "skyblue"],
+          ['2017-06-02',  37, "skyblue"],
+          ['2017-06-03',  65, "skyblue"]
+        ]);
+		
+		var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "도서를 얼마나 읽었나요?",
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+		max : 10,
+		min : 0
+      };
+		
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        chart.draw(view, options);
+      }
+	  
+	  
+</script>
+<center>
+	<div id="chart_div" style="border: 1px solid #ccc; width: 400px; height: 200px"></div>
+</center>
+</body>
+</html>

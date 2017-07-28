@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">#popup { width:600px; }
+.header h1 { height:45px; padding:0 0 0 20px; color:#fff; font-size:14px; line-height:45px; background-color:#495164; }
+.content { padding:20px; min-height:310px; }
+.btnArea { position:fixed; bottom:0; left:0; width:100%; padding:10px 0; border-top:1px solid #d7d5d5; text-align:center; background-color:#fbfafa; }
+.xans-calendar-modify table { table-layout:fixed; border:1px solid #d7d5d5; line-height:180%; }
+.xans-calendar-modify th { width:110px; padding:10px 0 8px 20px; border-top:1px solid #e8e8e8; border-right:1px solid #e8e8e8; background-color:#fbfafa; text-align:left; font-weight:normal; vertical-align:middle; }
+.xans-calendar-modify td { width:auto; padding:10px 0 8px 10px; border-top:1px solid #e8e8e8; }
+.xans-calendar-modify tr.first th,
+.xans-calendar-modify tr.first td { border-top:0; }
+.xans-calendar-modify td input,
+.xans-calendar-modify td textarea { padding:2px 2px 2px 4px; width:350px; height:18px; color:#202020; border:1px solid #d9d9d9; }
+.xans-calendar-modify td input#date { width:70px; text-align:center; }
+.xans-calendar-modify td input#confirm { width:40px; }
+.xans-calendar-modify td textarea { height:80px; }</style>
+</head>
+<body>
+	<div module="calendar_Modify">
+    <div class="header">
+        <h1>수정/삭제</h1>
+    </div>
+    <div class="content">
+    <form>
+        <table border="1" summary="">
+            <caption>수정/삭제</caption>
+            <tr class="first">
+                <th scope="row">판매 시작 일시</th>
+                <td>2017-06-07</td>
+            </tr>
+            <tr>
+                <th scope="row">제목</th>
+                <td><input type="text" name="title" id="title" size="35"></td>
+            </tr>
+            <tr>
+                <th scope="row">가격</th>
+                <td><input type="text" name="cost" id="cost" size="10"></td>
+            </tr>
+            <tr>
+                <th scope="row">거래가능지역</th>
+                <td><input type="text" name="region" id="region" size="20"></td>
+            </tr>
+            <tr>
+                <th scope="row">제품 사진</th>
+                <td><input type="file" name="image"></td>
+            </tr>
+            <tr>
+                <th scope="row">내용</th>
+                <td><textarea rows="10" cols="30" id="contents" name="contents"></textarea></td>
+            </tr>
+        </table>
+       
+    </div>
+    <div class="btnArea">
+        <a href="#none" onclick="{$action_modify}"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/calendar/btn_modify.gif" alt="수정" /></a>
+        <a href="#none" onclick="{$action_delete}"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/calendar/btn_delete.gif" alt="삭제" /></a>
+        <a href="#none" onclick="window.close()"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/calendar/btn_cancel.gif" alt="취소" /></a>
+    </div>
+     </form>
+</div>
+</body>
+</html>
