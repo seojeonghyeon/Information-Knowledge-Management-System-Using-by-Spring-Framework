@@ -101,5 +101,12 @@ public class HomeController {
         	return "200";
        }
 	}
+	@RequestMapping("/test")
+	@ResponseBody 
+	public String TestRDS() throws Exception {
+		testRDS test = new testRDS();
+		int result = test.save();
+		return "100";
+	}
 
 }

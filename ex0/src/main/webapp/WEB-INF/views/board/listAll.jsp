@@ -17,7 +17,7 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">LIST ALL PAGE</h3>
 				</div>
-				<div class="box-body">
+				<div class="box-bo dy">
 				
 <table class="table table-bordered">
 	<tr>
@@ -46,7 +46,7 @@
 
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer">Footer</div>
+				<div class="box-footer"><a href="/board/register">글  쓰기</a></div>
 				<!-- /.box-footer-->
 			</div>
 		</div>

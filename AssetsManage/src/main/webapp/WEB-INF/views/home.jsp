@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="resources/libs/jquery/src/jquery.js"></script>
+	<script type="text/javascript" src="resources/libs/jquery/src/jquery.j ms"></script>
 	<script type="text/javascript" src="resources/js/main.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Manage</title>

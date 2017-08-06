@@ -96,7 +96,11 @@ public class BoardController {
 
     return "redirect:/board/listAll";
   }
-
+  
+  @RequestMapping(value = "/listAll/register", method = RequestMethod.POST) 
+  public String registerBoard(Criteria cri, Model model) {
+	  return "board/register";
+  }
   @RequestMapping(value = "/listCri", method = RequestMethod.GET)
   public void listAll(Criteria cri, Model model) throws Exception {
 
