@@ -14,9 +14,9 @@ public class LoginProcess {
 	private static final String USER = "root"; 
 	private static final String PW = "000000";
 	
-	String user_ID;
-	String user_Password;
-	String user_Code;
+	private String user_ID;
+	private String user_Password;
+	private String user_Code;
 	public int loginprocess(String user_ID, String user_Password) throws Exception{
 		this.user_ID = user_ID;
 		this.user_Password = user_Password;
@@ -64,7 +64,7 @@ public class LoginProcess {
 		   }
 		return 3;
 	}
-	public String getID(){
-		return user_ID;		
+	public String getCode(){
+		return user_Code;		
 	}
 }

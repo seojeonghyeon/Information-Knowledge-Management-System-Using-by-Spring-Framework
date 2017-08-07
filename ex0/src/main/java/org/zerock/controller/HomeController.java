@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.LoginService.LoginProcess;
+import org.zerock.ManageService.ModifyAssets;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
@@ -56,24 +57,33 @@ public class HomeController {
 		return "register";
 	}
 	
-	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
+	//로그인
+	@RequestMapping(value = "main/main", method = RequestMethod.POST)
 	@ResponseBody 
-	public String main(@RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpServletRequest request) throws Exception {
+	public String loginweb(Locale locale, Model model, @RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpServletRequest request) throws Exception {
 		
 		System.out.println("ID : " + user_ID );
 		System.out.println("Password : " + user_Password );
 		LoginProcess clientuser = new LoginProcess();
 		
 		int returnValue = clientuser.loginprocess(user_ID, user_Password);
-		
+		String user_Code = clientuser.getCode();
 		if(returnValue == 1){
-			request.getSession().setAttribute("user_ID", user_ID);
+			request.getSession().setAttribute("user_Code", user_Code);
         	return "main/main";
         }else{
         	return "<script type='text/javascript'>alert('Login Fail!');history.go(-1);</script>";
        }
 	}
-
+	
+	//관리 페이지
+	@RequestMapping(value = "/managePage", method = RequestMethod.POST)
+	@ResponseBody 
+	public String managepage(Locale locale, Model model) throws Exception {
+		System.out.println("Manage Page is execute");
+        return "managePage";
+	}
+	
 	@RequestMapping(value="board/listAll", method = RequestMethod.POST)
 	public String board(Locale locale, Model model) {
 		return "board/listAll";

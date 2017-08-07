@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-        alert("비밀번호가 일치하지 않습니다.");
+        alert("Login Fail!!");
         document.location.href="";
      </script>
 </body>
