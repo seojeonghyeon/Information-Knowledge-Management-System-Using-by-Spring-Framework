@@ -42,7 +42,7 @@
     <!-- Main content -->
     <section class="content">
      <div>
-     	<form action="main/main" method="POST" id="loginProcess">
+     	<form action="main" method="POST" id="loginProcess">
      		  <table>
                 <tr>
                     <td id="title">ID</td>

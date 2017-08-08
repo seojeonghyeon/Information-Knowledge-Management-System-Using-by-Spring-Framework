@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 
@@ -29,7 +29,7 @@
              <div class="box-header with-border">
             	<ul><h2>Team Member</h2>
             		<li>Mento : 차연철</li>
-            		<li>Team Leader : 김태중</li>
+            		<li>Team Leader : ${sessionScope.user_ID}</li>
             		<li>Team Member : 서정현</li>
             	</ul>
             </div>

@@ -76,7 +76,7 @@
                   <li class="user-header">
                     <img src="/resources/dist/img/taejoong.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      	김태중 - Web Developer
+                      	${sessionScope.user_ID} - Web Developer
                       <small>Member since 2017.03</small>
                     </p>
                   </li>
@@ -119,7 +119,7 @@
               <img src="/resources/dist/img/taejoong.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>김태중</p>
+              <p>${sessionScope.user_ID}</p>
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

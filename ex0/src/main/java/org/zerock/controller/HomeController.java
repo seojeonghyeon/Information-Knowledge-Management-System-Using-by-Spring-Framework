@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,21 +64,27 @@ public class HomeController {
 	}
 	
 	//로그인
-	@RequestMapping(value = "main/main", method = RequestMethod.POST)
-	public String loginweb(Locale locale, Model model, @RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpServletRequest request) throws Exception {
-		
-		System.out.println("ID : " + user_ID );
-		System.out.println("Password : " + user_Password );
-		LoginProcess clientuser = new LoginProcess();
-		
-		int returnValue = clientuser.loginprocess(user_ID, user_Password);
-		String user_Code = clientuser.getCode();
-		if(returnValue == 1){
-			request.getSession().setAttribute("user_Code", user_Code);
-        	return "main/main";
-        }else{
-        	return "<script type='text/javascript'>alert('Login Fail!');history.go(-1);</script>";
-       }
+	@RequestMapping(value = "main", method = RequestMethod.POST)
+	public String loginweb(Locale locale, Model model, @RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpSession session, HttpServletRequest request) throws Exception {
+		if(user_ID != "" && user_Password != ""){
+			System.out.println("ID : " + user_ID );
+			System.out.println("Password : " + user_Password );
+			LoginProcess clientuser = new LoginProcess();
+			
+			int returnValue = clientuser.loginprocess(user_ID, user_Password);
+			String user_Code = clientuser.getCode();
+			if(returnValue == 1){
+				session = request.getSession();
+				session.setAttribute("user_Code", user_Code);
+				session.setAttribute("user_ID", user_ID);
+				System.out.println(session.getAttribute("user_Code"));
+	        	return "main/main";
+	        }else{
+	        	return "home";
+	       }
+		}else{
+			return "home";
+		}
 	}
 	
 	//관리 페이지
