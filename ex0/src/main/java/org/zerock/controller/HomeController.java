@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +39,8 @@ import org.zerock.domain.PageMaker;
 import org.zerock.service.BoardService;
 
 
+
+
 /**
  * Handles requests for the application home page.
  */
@@ -59,7 +64,6 @@ public class HomeController {
 	
 	//로그인
 	@RequestMapping(value = "main/main", method = RequestMethod.POST)
-	@ResponseBody 
 	public String loginweb(Locale locale, Model model, @RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpServletRequest request) throws Exception {
 		
 		System.out.println("ID : " + user_ID );
@@ -82,6 +86,26 @@ public class HomeController {
 	public String managepage(Locale locale, Model model) throws Exception {
 		System.out.println("Manage Page is execute");
         return "managePage";
+	}
+	
+	//POSTJSON
+	@RequestMapping("/postAssets") 
+	@ResponseBody 
+	public JSONArray androidTestWithRequestAndResponse(HttpServletRequest request) throws Exception { 
+		String user_ID = request.getParameter("userID");
+        ModifyAssets clientuser = new ModifyAssets(user_ID, 1);
+        JSONArray returnValue= clientuser.jsonCreate();
+        return returnValue;
+	}
+	
+	
+	@RequestMapping("/jsontest") 
+	@ResponseBody 
+	public void jsonTest() throws Exception {
+		String user_ID = "kim";
+        ModifyAssets clientuser = new ModifyAssets(user_ID, 1);
+        JSONArray returnValue= clientuser.jsonCreate();
+	    System.out.println(returnValue);
 	}
 	
 	@RequestMapping(value="board/listAll", method = RequestMethod.POST)
