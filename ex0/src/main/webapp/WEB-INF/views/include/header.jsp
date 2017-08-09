@@ -138,7 +138,7 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
            
-        	<li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>내 자산 조회</span></a></li>
+        	<li><a href="managePage"><i class="fa fa-book"></i> <span>내 자산 조회</span></a></li>
             <li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>정보 수정</span></a></li>
              <li><a href="/board/listAll"><i class="fa fa-book"></i> <span>게시판</span></a></li>
               <li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>QR Code 생성</span></a></li>

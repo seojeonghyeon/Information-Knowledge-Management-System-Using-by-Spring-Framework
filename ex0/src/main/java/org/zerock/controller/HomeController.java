@@ -88,11 +88,10 @@ public class HomeController {
 	}
 	
 	//관리 페이지
-	@RequestMapping(value = "/managePage", method = RequestMethod.POST)
-	@ResponseBody 
-	public String managepage(Locale locale, Model model) throws Exception {
+	@RequestMapping(value = "managePage")
+	public String managepage(Locale locale, Model model) {
 		System.out.println("Manage Page is execute");
-        return "managePage";
+        return "board/managePage";
 	}
 	
 	//POSTJSON
