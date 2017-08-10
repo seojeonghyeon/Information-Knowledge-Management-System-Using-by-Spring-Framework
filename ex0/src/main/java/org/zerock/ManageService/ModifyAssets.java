@@ -152,15 +152,6 @@ public class ModifyAssets {
 					    rs4.close();
 				    }
 		      }
-		      /*
-		      for(int i=0; i< asset_NumNumber.size(); i++){
-		    	  sql = "SELECT * FROM assets_table where asset_Number = '"+asset_ClassNumber.get(i)+"'";
-				    ResultSet rs3 = stmt.executeQuery(sql);
-				    while (rs3.next()){
-				    	asset_Class.add(rs3.getString("assets_Bigname"));
-				    }
-				    rs3.close();
-		      }*/
 		      
 		      stmt.close();
 		      con.close();

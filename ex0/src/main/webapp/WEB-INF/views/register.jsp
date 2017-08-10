@@ -24,6 +24,10 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+    .login-box-body {
+    height:400px;}
+    </style>
   </head>
 <body class="login-page">
     <div class="login-box">
@@ -65,22 +69,6 @@
                     </td>
                 </tr>
                     
-                <tr>
-                    <td id="title">Sex</td>
-                    <td>
-                        <input type="radio" name=gender value="남" checked>남
-                        <input type="radio" name=gender value="여" checked>여
-                    </td>
-                </tr>
-                    
-                <tr>
-                    <td id="title">Birth</td>
-                    <td>
-                        <input type="text" name=birth maxlength="8" size="8" >
-                        
-                        
-                    </td>
-                </tr>
                     
                 <tr>
                     <td id="title">E-mail</td>

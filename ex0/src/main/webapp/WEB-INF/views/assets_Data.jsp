@@ -3,7 +3,12 @@
     <%@ page session="true" %>
 <% request.setCharacterEncoding("UTF-8");%>
 <%@ page import="org.zerock.ManageService.ModifyAssets" %>
+<%@ page import="org.json.*"%>
 <%@ page import="java.util.ArrayList"%>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>IKAMS</title>
 
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- bring the DB data: QRcode image and data  -->
@@ -36,13 +41,13 @@
 	background-color: #4d4d4d;
 	} 
 </style>
-<%@include file="../include/header.jsp" %>
-
+</head>
+<body>
 <%
+String user_ID = "";
+user_ID = (String)session.getAttribute("user_ID");
+ModifyAssets Clientuser = new ModifyAssets(user_ID, 1);
 
-String user_Code = "";
-user_Code = (String)session.getAttribute("user_Code");
-ModifyAssets Clientuser = new ModifyAssets(user_Code);
 ArrayList<String> asset_Class = Clientuser.getAssetsClass();
 ArrayList<String> asset_Number = Clientuser.getAssetsNumber();
 ArrayList<String> asset_Code = Clientuser.getAssetsCode();
@@ -76,4 +81,5 @@ for(int i=0; i<asset_Class.size(); i++){
 <hr>
 <% } %>
 
-<%@include file="../include/footer.jsp" %>
+
+</body>

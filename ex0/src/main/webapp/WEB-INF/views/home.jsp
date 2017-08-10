@@ -64,7 +64,6 @@
      	</form>
      
      </div>
-       <a href="#">비밀번호를 잊어버렸습니다</a><br>
         <a href="register" class="text-center">회원가입</a>
     </section><!-- /.content -->
 

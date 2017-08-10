@@ -69,14 +69,14 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/resources/dist/img/taejoong.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">${sessionScope.user_ID}</span>
+                  <span class="hidden-xs">김태중</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="/resources/dist/img/taejoong.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      	${sessionScope.user_ID} - Web Developer
+                      	김태중 - Web Developer
                       <small>Member since 2017.03</small>
                     </p>
                   </li>
@@ -119,7 +119,7 @@
               <img src="/resources/dist/img/taejoong.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>${sessionScope.user_ID}</p>
+              <p>김태중</p>
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -138,11 +138,10 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
            
-        	<li><a href="managePage"><i class="fa fa-book"></i> <span>내 자산 조회</span></a></li>
-            <li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>정보 수정</span></a></li>
-             <li><a href="/board/listAll"><i class="fa fa-book"></i> <span>게시판</span></a></li>
-              <li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>QR Code 생성</span></a></li>
-               <li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>My Page</span></a></li>
+        	<li><a href="../board/managePage"><i class="fa fa-book"></i> <span>내 자산 조회</span></a></li>
+            <li><a href="../userinfo/modifyuser"><i class="fa fa-book"></i> <span>정보 수정</span></a></li>
+             <li><a href="../board/listAll"><i class="fa fa-book"></i> <span>게시판</span></a></li>
+              <li><a href="../qrcode/qrcode"><i class="fa fa-book"></i> <span>QR Code 생성</span></a></li>
         
           </ul>
         </section>
