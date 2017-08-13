@@ -17,6 +17,7 @@ public class LoginProcess {
 	private String user_ID;
 	private String user_Password;
 	private String user_Code;
+	private int result = 0;
 	public int loginprocess(String user_ID, String user_Password) throws Exception{
 		this.user_ID = user_ID;
 		this.user_Password = user_Password;
@@ -34,20 +35,39 @@ public class LoginProcess {
 		    System.out.println("Creating statement...");
 		    stmt = con.createStatement();
 		    String sql = "SELECT * FROM user_table1 where user_ID = '"+user_ID+"'";
-		    ResultSet rs = stmt.executeQuery(sql);
-		    while (rs.next()){
-		       String savedpass  = rs.getString("user_Password");
-		       String savedcode = rs.getString("user_Code");
+		    ResultSet rs1 = stmt.executeQuery(sql);
+		    while (rs1.next()){
+		       String savedpass  = rs1.getString("user_Password");
+		       String savedcode = rs1.getString("user_Code");
 		       if( user_Password.equals(savedpass)){
 		    	   user_Code = savedcode;
-		      	 return 1;
+		      	 result =  1;
 		       }else{
-		       	 return 2;
+		       	 result =  2;
 		       }
 		      }
-		      rs.close();
+		      
+		      String activity_Number = "";
+		      //해당 활동의 활동 번호를 가져와서 로그 테이블에 로그를 생성.
+		      sql = "SELECT * FROM activity_contents where activity_Contents = '"+"로그인"+"'";
+		      System.out.println(sql);
+		      ResultSet rs2 = stmt.executeQuery(sql);
+			  while (rs2.next()){
+			    	activity_Number  = rs2.getString("activity_Number");
+			  }
+			 
+			  
+		      sql = "insert into log_data (user_Code, activity_Number, log_Time)";
+		      sql += "values('"+user_Code+"','"+activity_Number+"', now())";
+		      System.out.println(sql);
+		      stmt.executeUpdate(sql);
+		      
+		      rs1.close();
+		      rs2.close();
 		      stmt.close();
+		      
 		      con.close();
+		      return result;
 		   }catch(SQLException se){
 			   System.out.println("error1");
 		      se.printStackTrace();

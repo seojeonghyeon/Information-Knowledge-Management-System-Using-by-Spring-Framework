@@ -38,13 +38,13 @@
         <p class="login-box-msg">Register User</p>
     <!-- Main content -->
     <section class="content">
-     <form method="post" action="http://yunghelor.cafe24.com/modelview/user_save.php" onsubmit="return checkValue()">
+     <form method="post" action="registerProcess">
             <table>
                 <tr>
                     <td id="title">ID</td>
                     <td>
                         <input type="text" name=id maxlength="50">
-                         
+                         <input type="button" name ="double" value="중복검사" >
                     </td>
                 </tr>
                         

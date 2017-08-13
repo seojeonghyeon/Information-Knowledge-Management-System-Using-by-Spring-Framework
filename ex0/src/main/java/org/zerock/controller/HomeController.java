@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.LoginService.LoginProcess;
 import org.zerock.ManageService.ModifyAssets;
+import org.zerock.RegisterService.RegisterProcess;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
@@ -55,8 +56,11 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 public String home(Locale locale, Model model) {
 	return "home";
 }
-@RequestMapping(value = "register", method = RequestMethod.GET)
-public String registerUser(Locale locale, Model model) {
+
+@RequestMapping(value = "register", method = RequestMethod.POST)
+public String registerUser(Locale locale, Model model, @RequestParam("user_Code") String user_Code, HttpSession session, HttpServletRequest request) {
+	session = request.getSession();
+	session.setAttribute("user_Code", user_Code);
 	return "register";
 }
 
@@ -103,6 +107,26 @@ public String qrcode(Locale locale, Model model) {
         return "board/managePage";
 	}
 	
+	//회원가입
+	@RequestMapping(value = "registerService", method = RequestMethod.POST)
+	public String RegisterService(Locale locale, Model model, @RequestParam("user_Code") String user_Code, @RequestParam("user_Address") String user_Address, @RequestParam("user_Email") String user_Email,@RequestParam("user_Name") String user_Name, @RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpSession session, HttpServletRequest request) throws Exception {
+		if(user_ID != "" && user_Password != ""){
+			System.out.println("ID : " + user_ID );
+			System.out.println("Password : " + user_Password );
+			System.out.println("Code : " + user_Code );
+			System.out.println("Address : " + user_Address );
+			System.out.println("Email : " + user_Email );
+			RegisterProcess clientuser = new RegisterProcess(user_ID, user_Password, user_Name, user_Email, user_Address, user_Code);
+			int resultNumber = clientuser.getResult();
+			if(resultNumber == 1){
+				return "success";
+			}else{
+				return "fail";
+			}
+		}else{
+			return "home";
+		}
+	}
 	
 	//로그인
 		@RequestMapping(value = "main", method = RequestMethod.POST)
