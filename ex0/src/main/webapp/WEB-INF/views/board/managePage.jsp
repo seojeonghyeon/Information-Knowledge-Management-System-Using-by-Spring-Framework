@@ -5,6 +5,9 @@
 <%@ page import="org.zerock.ManageService.ModifyAssets" %>
 <%@ page import="java.util.ArrayList"%>
 
+	<script  type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js" charset="UTF-8"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- bring the DB data: QRcode image and data  -->
 <!-- update the data and repeat -->
@@ -47,33 +50,36 @@ ArrayList<String> asset_Class = Clientuser.getAssetsClass();
 ArrayList<String> asset_Number = Clientuser.getAssetsNumber();
 ArrayList<String> asset_Code = Clientuser.getAssetsCode();
 ArrayList<String> asset_Info = Clientuser.getAssetsInfo();
-//ArrayList<String> qr_Image = Clientuser.getAssetsImage();
+ArrayList<String> qr_Image = Clientuser.getAssetsImage();
 
 for(int i=0; i<asset_Class.size(); i++){
-
+	String SizeName = "";
+	String content = asset_Info.get(i);
 %>
-
 
 <div style="background:white;">
 <br>
-	<a href="#" style="float:left;" onclick="window.open('resources/dashboard/QRwindow.html','','width=260,height=260, toolbars=no,resizable=yes,scrollbars=no')">
-			<img src="resources/images/QRgen.png" style="margin:10px;" width="40px" height="40px" align="left" alt="QRcode" class="hidden-xs hidden-sm">
-			<img src="resources/images/QRgen.png" style="margin:10px;" width="40px" height="40px" align="left" alt="QRcode" class="visible-xs visible-sm circle-logo">
+	<a href="#" style="float:left;" onclick="window.open('../resources/QRwindow.jsp?content=<%= content %>','','width=260,height=260, toolbars=no,resizable=yes,scrollbars=no')">
+			<img src="<%=qr_Image.get(i)%>" style="margin:10px;" width="40px" height="40px" align="left" alt="QRcode" class="hidden-xs hidden-sm">
+			<img src="<%=qr_Image.get(i)%>" style="margin:10px;" width="40px" height="40px" align="left" alt="QRcode" class="visible-xs visible-sm circle-logo">
 	</a>
-	<form style="float:right; margin:5px;" border="1px">
-	<center>
-	<a href="" style="float:right;" onclick="window.open('resources/dashboard/NFCwindow.html','','width=800,height=400, toolbars=no,resizable=yes,scrollbars=no')">
-			<img src="resources/images/nfc.png" width="40px" height="40px" alt="NFC" class="hidden-xs hidden-sm">
-			<img src="resources/images/nfc.png" width="40px" height="40px"  alt="NFC" class="visible-xs visible-sm circle-logo">
-	</a>
-	<p>View NFC</p>
-	</center>
-	</form>
-	<p><%=asset_Class.get(i)%> : <%=asset_Number.get(i)%></p>
-	<p><%=asset_Info%></p>
+	<% if(asset_Class.get(i).equals("도서")){
+		SizeName = "페이지 수";
+	}else if(asset_Class.get(i).equals("식품")){
+		SizeName = "유통 기한";
+	}
+	%>
+	<p> 자산의  코드  = <%=asset_Code.get(i)%></p>
+	<% String[] array = asset_Info.get(i).split("/"); %>
+	 <p>대분류 : <%=asset_Class.get(i)%>, 이름 :  <%= array[1] %>,제작자 : <%= array[2] %>, <%= SizeName %> : <%=array[3]%></p>
 	<br>
+	<form name="viewerForm" action="deleteProcess" method="post">
+	<div>
+		<input type="text" value="<%=asset_Code.get(i)%>" name="asset_Code" id="asset_Code" style="display:none"/>
+		<input type="submit" id="delete" value="이 자산을 삭제" name="delete" onclick="exec('viewerForm','<%=asset_Code.get(i)%>')">
+	</div>
+	</form>
 </div>
 <hr>
 <% } %>
-
 <%@include file="../include/footer.jsp" %>

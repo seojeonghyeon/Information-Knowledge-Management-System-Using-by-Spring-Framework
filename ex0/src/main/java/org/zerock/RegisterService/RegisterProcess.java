@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.junit.Test;
+import org.zerock.LogService.LogManage;
 
 public class RegisterProcess {
 	private static final String DRIVER = "org.mariadb.jdbc.Driver";
@@ -56,20 +57,8 @@ public class RegisterProcess {
 			      System.out.println(sql);
 			      stmt.executeUpdate(sql);
 			      
-			      
-			      //해당 활동의 활동 번호를 가져와서 로그 테이블에 로그를 생성.
-			      sql = "SELECT * FROM activity_contents where activity_Contents = '"+"회원가입"+"'";
-			      System.out.println(sql);
-				  ResultSet rs = stmt.executeQuery(sql);
-				  while (rs.next()){
-				    	activity_Number  = rs.getString("activity_Number");
-				  }
-				  rs.close();
-			      
-			      sql = "insert into log_data (user_Code, activity_Number, log_Time)";
-			      sql += "values('"+user_Code+"','"+activity_Number+"', now())";
-			      System.out.println(sql);
-			      stmt.executeUpdate(sql);
+			      LogManage logService = new LogManage(user_Code, "저장", "회원가입");
+			      logService.LogSave();
 			      stmt.close();
 			      
 			      con.close();

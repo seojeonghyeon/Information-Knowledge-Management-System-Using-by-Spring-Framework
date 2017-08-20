@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -29,7 +31,10 @@ public class UserController {
 
     logger.info("register get ...........");
   }
-
+  @RequestMapping(value = "/modifyuser2", method = RequestMethod.GET)
+	public void home(Locale locale, Model model) {
+	  logger.info("modifyuser2");
+	}
 
 
  

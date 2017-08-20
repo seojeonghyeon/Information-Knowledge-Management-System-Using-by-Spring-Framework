@@ -68,13 +68,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/resources/dist/img/user1.png" class="user-image" alt="User Image"/>
+                  <img src="/resources/dist/img/taejoong.jpg" class="user-image" alt="User Image"/>
                   <span class="hidden-xs">${sessionScope.user_ID}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="/resources/dist/img/user1.png" class="img-circle" alt="User Image" />
+                    <img src="/resources/dist/img/taejoong.jpg" class="img-circle" alt="User Image" />
                     <p>
                       	${sessionScope.user_ID}
                     </p>
@@ -115,7 +115,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="/resources/dist/img/user1.png" class="img-circle" alt="User Image" />
+              <img src="/resources/dist/img/taejoong.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p>${sessionScope.user_ID}</p>
@@ -138,9 +138,11 @@
             <li class="header"></li>
            
         	<li><a href="../board/managePage"><i class="fa fa-book"></i> <span>내 자산 조회</span></a></li>
+            <li><a href="../qrcode/qrcode"><i class="fa fa-book"></i> <span>QR Code 생성</span></a></li>
             <li><a href="../userinfo/modifyuser"><i class="fa fa-book"></i> <span>정보 수정</span></a></li>
              <li><a href="../board/listAll"><i class="fa fa-book"></i> <span>게시판</span></a></li>
-              <li><a href="../qrcode/qrcode"><i class="fa fa-book"></i> <span>QR Code 생성</span></a></li>
+             <li><a href="../logData"><i class="fa fa-book"></i> <span>최근 사용자 활동 내역 보기</span></a></li>
+              
         
           </ul>
         </section>

@@ -12,14 +12,10 @@
       <div class="col-md-12">
         <!-- general form elements -->
 
-		<!DOCTYPE html>
-<html>
-<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<script type="text/javascript" src="/js/jquery-1.7.2.min.js" charset="UTF-8"></script> 
+	<script  type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js" charset="UTF-8"></script> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-</head>
-<body>
+
 	<style>
 		.selectbox { 
 		position: relative; width: 200px;
@@ -58,7 +54,8 @@
 		appearance: none; 
 		}
 	</style>
-	<script type="text/javascript">
+	
+	<script type="text/javascript" content="text/html; charset=utf-8">
 		function myFunction() {
 		    var qr = document.getElementById("QR");
 		    if(qr.value == '1'){  //도서
@@ -75,33 +72,45 @@
 		$(document).ready(function(){
 			$("#execute").click(function(){
 				var qr = document.getElementById("QR");
+				var content = "";
+				var name = "";
+				var maker="";
+				var encodeContent ="";
 				googleQRUrl = "https://chart.googleapis.com/chart?chs=177x177&cht=qr&chl=";
 				if(qr.value == 1){  //도서
-					var bookname = $("#bookname").val(); 
-					var writer = $("#writer").val();
+					name = $("#bookname").val(); 
+					maker = $("#writer").val();
 					var pagenumber = $("#pagenumber").val(); 
-					bookname = encodeURIComponent(bookname);
-					pagenumber = encodeURIComponent(pagenumber);
-					writer = encodeURIComponent(writer);
-					googleQRUrl = "https://chart.googleapis.com/chart?chs=177x177&cht=qr&chl=";
-					var content = "도서/"+bookname+"/"+pagenumber+"/"+writer;
-					$("#img").attr("src", googleQRUrl + "content="+content+'&choe=UTF-8');
+					content = "도서/"+name+"/"+maker+"/"+pagenumber;
+					
 					
 				}else if(qr.value == 2){ //식료품
-					var foodname = $("#foodname").val();
-					var maker = $("#maker").val();
+					name = $("#foodname").val();
+					maker = $("#maker").val();
 					var foodday = $("#foodday").val();
-					foodname = encodeURIComponent(foodname);
-					maker = encodeURIComponent(maker);
-					foodday = encodeURIComponent(foodday);
-					var content = "식료품/"+foodname+"/"+maker+"/"+foodday;
+					content = "식료품/"+name+"/"+maker+"/"+foodday;
+					
 				}
-				$("#img").attr("src", googleQRUrl + "content="+content+'&choe=UTF-8');
-				});});
+				encodeContent = encodeURIComponent(content);
+				$("#img").attr("src", googleQRUrl + "content="+encodeContent+'&choe=UTF-8');
+				$("#asset_class").attr("value", qr.value);
+				$("#asset_number").attr("value", name);
+				$("#Maker").attr("value", maker);
+				$("#asset_info").attr("value", content);
+				$("#qr_image").attr("value", googleQRUrl + "content="+encodeContent+'&choe=UTF-8');
+			});
+			}
+		);
 	</script>
 <div>
-	<img id="img" style="display:none; float:right;" onload="this.style.display='block'" />
-	<form name="qrcode_form" method="post">
+	<form action="qr_saveService" id="qr_saveService" method="post">
+		<img id="img" style="display:none; float:right;" onload="this.style.display='block'" />
+		<input type="text" name="asset_class" id="asset_class" style="display:none"/>
+		<input type="text" name="asset_number" id="asset_number"  style="display:none"/>
+		<input type="text" name="Maker" id="Maker" style="display:none"/>
+		<input type="text" name="asset_info" id="asset_info" style="display:none"/>
+		<input type="text" name="qr_image" id="qr_image" style="display:none"/>
+		
 		QR.ver: 3.0<input type="hidden" name="qr_version" value="3.0" size="5" style="display:none"/>
 		<br>
 		<select name="QR" id="QR" onchange="myFunction()">
@@ -122,11 +131,12 @@
 			제조업체 명 : <input type="text" id="maker" name="maker"/><br>
 			유통기한 : <input type="text" id="foodday" name="foodday"/><br>
 		</div>
-		<input type="button" id="execute" value="Generate"/>
+		<div>
+			<input type="button" id="execute" value="Generate"/>
+			<input type="submit" id="qr_save" value="save"/>
+		</div>
 	</form>
 </div>
-</body>
-</html>
              
         </div>
       </div><!--/.col (left) -->

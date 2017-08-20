@@ -64,9 +64,6 @@
      	</form>
      
      </div>
-     <!-- 
-        <a href="register" class="text-center">회원가입</a>
-     -->
     </section>
 
   </body>

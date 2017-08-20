@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.LoginService.LoginProcess;
 import org.zerock.ManageService.ModifyAssets;
+import org.zerock.ManageService.QRSave;
 import org.zerock.RegisterService.RegisterProcess;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
@@ -57,11 +58,19 @@ public String home(Locale locale, Model model) {
 	return "home";
 }
 
-@RequestMapping(value = "register", method = RequestMethod.POST)
+@RequestMapping(value = "regist", method = RequestMethod.GET)
 public String registerUser(Locale locale, Model model, @RequestParam("user_Code") String user_Code, HttpSession session, HttpServletRequest request) {
 	session = request.getSession();
 	session.setAttribute("user_Code", user_Code);
-	return "register";
+	return "regist";
+}
+
+@RequestMapping(value = "board/deleteProcess", method = RequestMethod.POST)
+public String deleteProcess(Locale locale, Model model, @RequestParam("asset_Code") String asset_Code, HttpSession session, HttpServletRequest request) throws Exception {
+	String user_Code = (String) session.getAttribute("user_Code");
+	ModifyAssets clientuser = new ModifyAssets(user_Code);
+	clientuser.deleteAssets(asset_Code);
+	return "board/managePage";
 }
 
 
@@ -82,6 +91,10 @@ public String qrcode(Locale locale, Model model) {
 	return "qrcode/qrcode";
 }
 	
+@RequestMapping(value="logData")
+public String log(Locale locale, Model model) {
+	return "log/log";
+}
 	
 	@RequestMapping("/login")
 	@ResponseBody 
@@ -107,9 +120,11 @@ public String qrcode(Locale locale, Model model) {
         return "board/managePage";
 	}
 	
+	
 	//회원가입
-	@RequestMapping(value = "registerService", method = RequestMethod.POST)
-	public String RegisterService(Locale locale, Model model, @RequestParam("user_Code") String user_Code, @RequestParam("user_Address") String user_Address, @RequestParam("user_Email") String user_Email,@RequestParam("user_Name") String user_Name, @RequestParam("user_ID") String user_ID, @RequestParam("user_Password") String user_Password, HttpSession session, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "CheckNew", method = RequestMethod.GET)
+	public String RegisterService(Locale locale, Model model, @RequestParam("user_Code") String user_Code, @RequestParam("user_Address") String user_Address, @RequestParam("user_Email") String user_Email,@RequestParam("user_Name") String user_Name, @RequestParam("user_ID") String user_ID,@RequestParam("user_rePassword") String user_rePassword, @RequestParam("user_Password") String user_Password, HttpSession session, HttpServletRequest request) throws Exception {
+		
 		if(user_ID != "" && user_Password != ""){
 			System.out.println("ID : " + user_ID );
 			System.out.println("Password : " + user_Password );
@@ -119,12 +134,35 @@ public String qrcode(Locale locale, Model model) {
 			RegisterProcess clientuser = new RegisterProcess(user_ID, user_Password, user_Name, user_Email, user_Address, user_Code);
 			int resultNumber = clientuser.getResult();
 			if(resultNumber == 1){
-				return "success";
+				return "home";
 			}else{
-				return "fail";
+				return "home";
 			}
 		}else{
 			return "home";
+		}
+	}
+
+	//QRcode Save
+	@RequestMapping(value = "qrcode/qr_saveService", method = RequestMethod.POST)
+	public String qrsave(Locale locale, Model model, @RequestParam("asset_class") String asset_class, @RequestParam("asset_number") String asset_number, @RequestParam("Maker") String Maker, @RequestParam("asset_info") String asset_info, @RequestParam("qr_image") String qr_image, HttpSession session, HttpServletRequest request) throws Exception {
+		if(asset_class != "" && asset_number != ""){
+			System.out.println("ID : " + asset_class );
+			System.out.println("Password : " + asset_number );
+			session = request.getSession();
+			String user_Code = (String) session.getAttribute("user_Code");
+			System.out.println(user_Code);
+			QRSave qr_asset = new QRSave(user_Code, asset_class, asset_number, Maker, asset_info, qr_image);
+			
+			int returnValue = qr_asset.resultValue();
+			if(returnValue == 1){
+				System.out.println("Succesful save");
+	        	return "board/managePage";
+	        }else{
+	        	return "main/main";
+	       }
+		}else{
+			return "main/main";
 		}
 	}
 	
@@ -160,7 +198,14 @@ public String qrcode(Locale locale, Model model) {
 		
 	    return "assets_Data";
 	}
-	
+	@RequestMapping(value="/jsonService",produces="application/json;charset=utf-8", method = RequestMethod.GET) 
+	public String jsondata(@RequestParam("user_ID") String user_ID, Locale locale, Model model, HttpServletRequest request, HttpSession session) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		session = request.getSession();
+		session.setAttribute("user_ID", user_ID);
+		
+	    return "JSONdata";
+	}
 	
 	
 }

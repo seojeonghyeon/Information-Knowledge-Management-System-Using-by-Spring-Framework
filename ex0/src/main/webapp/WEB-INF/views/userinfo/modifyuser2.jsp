@@ -62,8 +62,8 @@
                 </tr>
             </table>
 <div class="box-footer">
-	<button type="submit" class="btn btn-primary">Login</button>
-	<button type="submit" class="btn btn-warning">CANCEL</button>
+	<button type="submit" class="btn btn-primary">수정</button>
+	<button type="submit" class="btn btn-warning">취소</button>
 </div>
 
 <script>
