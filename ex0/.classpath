@@ -25,5 +25,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/SpringWorkSpace/gcm-server.jar"/>
+	<classpathentry kind="lib" path="C:/SpringWorkSpace/com.springsource.edu.emory.mathcs.backport_3.1.0.jar.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

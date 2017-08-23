@@ -35,6 +35,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.LoginService.LoginProcess;
 import org.zerock.ManageService.ModifyAssets;
 import org.zerock.ManageService.QRSave;
+import org.zerock.PushMessageService.TokenRegist;
 import org.zerock.RegisterService.RegisterProcess;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
@@ -113,6 +114,21 @@ public String log(Locale locale, Model model) {
        }
 	}
 	
+	//Token 등록
+	@RequestMapping("/RegistToken")
+	@ResponseBody 
+	public String RegistToken(HttpServletRequest request) throws Exception { 
+		String user_ID = request.getParameter("user_ID");
+		String user_Token = request.getParameter("user_Token");
+		TokenRegist clientuser = new TokenRegist(user_ID, user_Token);
+		int returnValue = clientuser.getResult();
+		if(returnValue == 1){
+        	return "100";
+        }else{
+        	return "200";
+       }
+	}
+	
 	//관리 페이지
 	@RequestMapping(value = "board/managePage")
 	public String managepage(Locale locale, Model model) {
@@ -122,7 +138,7 @@ public String log(Locale locale, Model model) {
 	
 	
 	//회원가입
-	@RequestMapping(value = "CheckNew", method = RequestMethod.GET)
+	@RequestMapping(value = "retu", method = RequestMethod.GET)
 	public String RegisterService(Locale locale, Model model, @RequestParam("user_Code") String user_Code, @RequestParam("user_Address") String user_Address, @RequestParam("user_Email") String user_Email,@RequestParam("user_Name") String user_Name, @RequestParam("user_ID") String user_ID,@RequestParam("user_rePassword") String user_rePassword, @RequestParam("user_Password") String user_Password, HttpSession session, HttpServletRequest request) throws Exception {
 		
 		if(user_ID != "" && user_Password != ""){

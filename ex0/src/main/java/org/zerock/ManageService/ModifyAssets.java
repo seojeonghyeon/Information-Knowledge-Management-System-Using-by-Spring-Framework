@@ -78,6 +78,9 @@ public class ModifyAssets {
 		this.user_Code = user_Code;
 		setAssets();
 	}
+	public String getuser_Code(){
+		return user_Code;
+	}
 	public ArrayList<String> getAssetsClass(){
 		return asset_Class;
 	}
