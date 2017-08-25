@@ -79,7 +79,15 @@ public String deleteProcess(Locale locale, Model model, @RequestParam("asset_Cod
 public String board(Locale locale, Model model) {
 	return "board/listAll";
 }
-
+@RequestMapping(value="board/listAllapp", method = RequestMethod.GET)
+public String appboard(Locale locale, Model model,@RequestParam("user_ID") String user_ID, HttpSession session, HttpServletRequest request) throws Exception {
+	ModifyAssets clientuser = new ModifyAssets(user_ID, 1);
+	String user_Code = clientuser.getuser_Code();
+	session = request.getSession();
+	session.setAttribute("user_ID", user_ID);
+	session.setAttribute("user_Code", user_Code);
+	return "board/listAll";
+}
 
 @RequestMapping(value="userinfo/modifyuser", method = RequestMethod.POST)
 public String modify(Locale locale, Model model) {
@@ -115,11 +123,14 @@ public String log(Locale locale, Model model) {
 	}
 	
 	//Token 등록
-	@RequestMapping("/RegistToken")
+	@RequestMapping(value ="/RegistToken", method = RequestMethod.GET)
 	@ResponseBody 
 	public String RegistToken(HttpServletRequest request) throws Exception { 
-		String user_ID = request.getParameter("user_ID");
-		String user_Token = request.getParameter("user_Token");
+		String user_Token = request.getParameter("Token");
+		String user_ID;
+		String[] array = user_Token.split("/");
+		user_Token = array[0];
+		user_ID = array[1];
 		TokenRegist clientuser = new TokenRegist(user_ID, user_Token);
 		int returnValue = clientuser.getResult();
 		if(returnValue == 1){
@@ -138,7 +149,7 @@ public String log(Locale locale, Model model) {
 	
 	
 	//회원가입
-	@RequestMapping(value = "retu", method = RequestMethod.GET)
+	@RequestMapping(value = "retu", method = RequestMethod.POST)
 	public String RegisterService(Locale locale, Model model, @RequestParam("user_Code") String user_Code, @RequestParam("user_Address") String user_Address, @RequestParam("user_Email") String user_Email,@RequestParam("user_Name") String user_Name, @RequestParam("user_ID") String user_ID,@RequestParam("user_rePassword") String user_rePassword, @RequestParam("user_Password") String user_Password, HttpSession session, HttpServletRequest request) throws Exception {
 		
 		if(user_ID != "" && user_Password != ""){
