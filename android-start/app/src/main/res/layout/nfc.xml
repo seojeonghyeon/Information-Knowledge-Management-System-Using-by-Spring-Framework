@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center"
+    tools:context="com.example.ikams.NFC2"
+    android:orientation="vertical">
+
+    <CheckBox android:id="@+id/checkbox1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="식료품"></CheckBox>
+
+
+    <CheckBox android:id="@+id/checkbox2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="지식자산"></CheckBox>
+
+
+    <EditText
+        android:id="@+id/mime"
+        android:hint="Mime-type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/value"
+        android:hint="Value"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <EditText
+        android:id="@+id/text"
+        android:hint="text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_message"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="NFC 정보 저장"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_write"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="NFC 읽기"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+</LinearLayout>

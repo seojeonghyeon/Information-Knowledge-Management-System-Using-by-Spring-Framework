@@ -1,0 +1,222 @@
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="ID"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "ID를 입력해주세요"
+            android:id="@+id/userID"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Pass"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "Password를 입력해주세요."
+            android:id="@+id/userPass"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="RePass"
+            android:id="@+id/tv1"
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "Password를 재입력해주세요."
+            android:id="@+id/userRePass"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Name"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "이름를 입력해주세요"
+            android:id="@+id/userName"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="E-mail"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "E-mail을 입력해주세요"
+            android:id="@+id/userEmail"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Home-Add"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "주소를 입력해주세요"
+            android:id="@+id/userHomeAdd"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Home#"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "집전화번호를 입력해주세요"
+            android:id="@+id/userHomeNumber"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "50dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="Phone#"
+
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:hint = "핸드폰번호를 입력해주세요"
+            android:id="@+id/userPhoneNumber"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv1"
+            android:layout_toEndOf="@+id/tv1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
+        <Button
+            android:layout_width = "100dp"
+            android:layout_height = "40dp"
+            android:onClick="onClick"
+            android:text = "회원등록"
+            android:id="@+id/loginbtn"
+            android:background="#DDDDDD"
+            android:textColor="#000000"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+    </LinearLayout>
+</LinearLayout>
