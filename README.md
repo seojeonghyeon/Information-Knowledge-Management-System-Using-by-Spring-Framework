@@ -28,9 +28,9 @@ Some features of this project
 ## How to install
 It is recommended for reference only. To install this project, do the following steps:
 1. Java development tool(Eclipse, IntelliJ..) execute
-2. Import the code 'IoTrash_Web.zip'.
+2. Import the code 'Web Source Code/ex0'.
 3. Execute the code  or  Export a 'war' file and excute tomcat8 on server.
-4. Import the code 'Application-master.zip' to Android development tool(Android Studio..).
+4. Import the code 'App Source Code/android-start' to Android development tool(Android Studio..).
 5. excute the application.
  
 ## Preview
