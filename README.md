@@ -6,7 +6,9 @@
 * [Preview](#Preview)
 
 ## Introduction
-  The janitor who manages trash bins in many buildings has the difficulty of going around and checking the bins every time. So we suggest a solution of trash bins monitoring system. This system Contributes easy manages for janitor. We used some platforms that 'Spring framework for server', 'ARTIK 053 for hardware', 'Android Studio for smartphone'. 'Spring Framework' is a server development tools for Java. This project was done a 'Spring Framework' applied 'MVC patterns(JSP+Spring Framework, RESTful API, Firebase). The server was communicated hardware of 'ARTIK 530' and smartphone of 'Android'. 'ARTIK053' is a platform supported 'ARTIK' of SAMSUNG. Support for that platform is now deprecated(~2018). This platform was make up 'C' language in Tizen RT. Hardware is attached trash bins. Hardware check a trash bins and request a server add the checked values real time. So server saved the reqeusted values and show this values through web pages and Android smartphone.
+
+
+  Every house has a variety of information and knowledge assets, such as books or CDs/DVDs. However, managing information assets at home is very difficult. This project manages the information knowledge assets held at home through the creation, distribution and recognition of QR-Codes. In addition, it records and stores the status and impressions of individual information and knowledge assets so that individuals can systematically manage smart information knowledge even at home. We used some platforms that 'Spring framework for server', 'Android Studio for smartphone'. 'Spring Framework' is a server development tools for Java. This project was done a 'Spring Framework' applied 'MVC patterns(JSP+Spring Framework, RESTful API, Firebase). The server was communicated smartphone of 'Android'. Hardware is QR-code. Hardware is printed on web page and attached some things. server saved the QR-code values and show this values through web pages and Android smartphone.
   
   
 Some features of this project
